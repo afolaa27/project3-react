@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Label} from 'semantic-ui-react'
+import {Form,Button, Label} from 'semantic-ui-react'
 
 class LoginRegisterForm extends Component{
 	constructor(props){
@@ -9,7 +9,7 @@ class LoginRegisterForm extends Component{
 			email : '',
 			password : '',
 			username: '',
-			action : 'register'
+			action : 'login'
 		}
 
 	}
@@ -64,6 +64,11 @@ class LoginRegisterForm extends Component{
 							value={this.state.password}
 							onChange={this.handleChange}
 							/>
+					<Button type ="Submit">
+					{
+						this.state.action==="register"? "Register":"Login"
+					}
+					</Button>
 				</Form>
 			</div>
 			)

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Form,Button, Label} from 'semantic-ui-react'
+import './index.css'
 
 class LoginRegisterForm extends Component{
 	constructor(props){
@@ -27,10 +28,17 @@ class LoginRegisterForm extends Component{
 			[event.target.name]: event.target.value
 		})
 	}
+	handleSubmit=(event)=>{
+		if(this.state.action==='register'){
+			this.props.register(this.state)
+		}else{
+			this.props.login(this.state)
+		}
+	}
 	render(){
 			return(
 			<div className="LoginRegisterForm"> 
-				<Form>
+				<Form onSubmit ={this.handleSubmit}>
 					{
 						this.state.action === 'register'
 						?
@@ -70,6 +78,13 @@ class LoginRegisterForm extends Component{
 					}
 					</Button>
 				</Form>
+				{
+					this.state.action ==='register'
+					?
+					<small> if you have an account Log in <span className="link" onClick={this.switchForm}>here</span>.</small>
+					:
+					<small> dont have an account Sign up <span className="link" onClick={this.switchForm}>here</span>!</small>
+				}
 			</div>
 			)
 		}

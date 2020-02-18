@@ -30,11 +30,34 @@ class App extends Component {
       }
     }
   }
+  login = async(loginInfo)=>{
+    const url = process.env.REACT_APP_API_URL + '/api/v1/users/login'
+    try{
+        const logResponse = await fetch(url,{
+          credentials: 'include',
+          method: "POST",
+          body: JSON.stringify(loginInfo),
+          headers:{
+            'Content-Type' : 'application/json'
+          }
+        })
+        const loginJson = await loginResponse.json()
+        if(loginResponse.status ===200){
+          this.setState({
+            loggedIn: true,
+            loggedInUserEmail : loginJson.data.email
+          })
+        }
+      }
+        catch(err){
+          console.error(err)
+      }
+  }
   render(){
       return(
       <div className="App"> 
         
-          <LoginRegisterForm register={this.register}/>
+          <LoginRegisterForm register={this.register} login={this.login}/>
         
       </div>
       )

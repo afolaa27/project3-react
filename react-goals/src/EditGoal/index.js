@@ -3,7 +3,7 @@ import { Form, Button, Label, Header, Segment, Modal } from 'semantic-ui-react'
 
 function EditGoal(props) {
 		return(
-			
+
 				<Modal open={props.open} closeIcon={true} onClose={props.closeModal}>
 					<Modal.Content>
 						

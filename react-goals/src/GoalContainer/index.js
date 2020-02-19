@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import GoalList from '../GoalList'
 import NewGoalForm from '../NewGoalForm'
 import EditGoal from '../EditGoal'
-
+import {Button} from 'semantic-ui-react'
+import '../index.css'
 
 
 class GoalContainer extends Component {
@@ -11,6 +12,7 @@ class GoalContainer extends Component {
 		this.state = {
 			goals:[],
 			editModalOpen: false,
+			addModalOpen: false,
 			goalToEdit:{
 				title : '',
 				description : '',
@@ -80,6 +82,7 @@ class GoalContainer extends Component {
 		    catch(err){
 		      console.error(err)
 		  }
+		  this.closeAddModal()
 	}
 	editGoal = async (idGoalToEdit) =>{
 		const goalToEdit = this.state.goals.find((goal)=>goal.id === idGoalToEdit)
@@ -146,12 +149,35 @@ class GoalContainer extends Component {
 			editModalOpen:false
 		})
 	}
+	closeAddModal=()=>{
+		this.setState({
+			addModalOpen:false
+		})
+	}
+	openAddModal=()=>{
+		this.setState({
+			addModalOpen:true
+		})
+	}
 	render(){
 			return(
 			<div> 
 				<React.Fragment>
 					<GoalList goals={this.state.goals} deleteGoal={this.deleteGoal} editGoal={this.editGoal}/>
-					<NewGoalForm createGoal={this.createGoal}/>
+					<div className='addGoal'>
+						
+						<Button onClick={this.openAddModal}>Add Goal</Button>
+					</div>
+					{
+					this.state.addModalOpen
+					?
+					<NewGoalForm createGoal={this.createGoal} 
+					open={this.state.addModalOpen}
+					closeModal={this.closeAddModal}
+					/>
+					:
+					null
+					}
 					{
 						this.state.idGoalToEdit !==-1
 						?

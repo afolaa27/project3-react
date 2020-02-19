@@ -38,15 +38,15 @@ class LoginRegisterForm extends Component{
 	}
 	render(){
 			return(
-			<div className="LoginRegisterForm"> 
-				<Card centered={true}>
+			<div className="LoginRegisterForm" className="login" > 
+				<Card centered={true} className='formCard' >
 					
-				<Form onSubmit ={this.handleSubmit}>
+				<Form onSubmit ={this.handleSubmit} >
 					{
 						this.state.action === 'register'
 						?
-						<React.Fragment>
-							<Label>Username:</Label>
+						<React.Fragment >
+							<label>Username</label>
 							<Form.Input 
 							type='text'
 							name='username'
@@ -59,7 +59,7 @@ class LoginRegisterForm extends Component{
 						:
 						null
 					}
-					<Label>email:</Label>
+					<label>Email</label>
 							<Form.Input 
 							type='text'
 							name='email'
@@ -67,7 +67,7 @@ class LoginRegisterForm extends Component{
 							value={this.state.email}
 							onChange={this.handleChange}
 							/>
-					<Label>password:</Label>
+					<label>Password</label>
 							<Form.Input 
 							type='password'
 							name='password'

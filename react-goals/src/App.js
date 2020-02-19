@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import LoginRegisterForm from './LoginRegisterForm'
 import GoalContainer from './GoalContainer'
-
+import 'semantic-ui-css/semantic.min.css'
+import './index.css'
 
 class App extends Component {
   constructor(props){

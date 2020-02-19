@@ -9,7 +9,7 @@ function GoalList(props) {
 		const date = currentDate.getDate()
 		return(
 
-			<Card key={goal.id} centered={true}>
+			<Card key={goal.id} centered={true} >
 				<Card.Content>
 					<Card.Header>
 						Tittle : {goal.title}

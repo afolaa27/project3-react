@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Button, Label, Segment} from 'semantic-ui-react'
+import {Form, Button, Label, Segment, Modal} from 'semantic-ui-react'
 
 
 class NewGoalForm extends Component{
@@ -32,7 +32,7 @@ class NewGoalForm extends Component{
 	}
 	render(){
 			return(
-			<Segment> 
+			<Modal open={this.props.open} closeIcon={true} onClose={this.props.closeModal}>
 				<Form onSubmit={this.handleSubmit}>
 					<Label>Title:</Label>
 							<Form.Input 
@@ -68,7 +68,7 @@ class NewGoalForm extends Component{
 							/>
 					<Button type="Submit" >Create Goal</Button>
 				</Form>
-			</Segment>
+			</Modal>
 			)
 		}
 }

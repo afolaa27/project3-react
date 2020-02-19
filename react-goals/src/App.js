@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import LoginRegisterForm from './LoginRegisterForm'
+import GoalContainer from './GoalContainer'
 
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
   login = async(loginInfo)=>{
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/login'
     try{
-        const logResponse = await fetch(url,{
+        const logResponse = await fetch(url, {
           credentials: 'include',
           method: "POST",
           body: JSON.stringify(loginInfo),
@@ -41,8 +42,8 @@ class App extends Component {
             'Content-Type' : 'application/json'
           }
         })
-        const loginJson = await loginResponse.json()
-        if(loginResponse.status ===200){
+        const loginJson = await logResponse.json()
+        if(logResponse.status ===200){
           this.setState({
             loggedIn: true,
             loggedInUserEmail : loginJson.data.email
@@ -56,8 +57,14 @@ class App extends Component {
   render(){
       return(
       <div className="App"> 
+        {
+          this.state.loggedIn
+          ?
+          <GoalContainer/>
+          :
         
           <LoginRegisterForm register={this.register} login={this.login}/>
+        }
         
       </div>
       )

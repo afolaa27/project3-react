@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import GoalList from '../GoalList'
+import NewGoalForm from '../NewGoalForm'
 
 
 
@@ -56,12 +57,35 @@ class GoalContainer extends Component {
 		      console.error(err)
 		  }
 	}
+	createGoal = async (goalToAdd)=>{
+		try{
+		    const createResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/goals/',{
+		    	methond: 'POST',
+		    	body: JSON.stringify(goalToAdd),
+		    	credentials: 'include',
+		    	headers:{
+		    		'Content-Type': 'application/json'
+		    	}
+		    })
+		    const createJson = await createResponse.json()
+
+		    if(createResponse.status ===201){
+		    	this.setState({
+		    		goals:[...this.state.goals, createJson.data]
+		    	})
+		    }
+		  }
+		    catch(err){
+		      console.error(err)
+		  }
+	}
 
 	render(){
 			return(
 			<div> 
 				<React.Fragment>
 					<GoalList goals={this.state.goals} deleteGoal={this.deleteGoal}/>
+					<NewGoalForm createGoal={this.createGoal}/>
 				</React.Fragment>
 			</div>
 			)

@@ -12,12 +12,14 @@ class NewGoalForm extends Component{
 			before_deadline : ''
 		}
 	}
+
 	handleChange = (event)=>{
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
 	handleSubmit = (event) =>{
+		console.log("ive been hit");
 		event.preventDefault()
 		this.props.createGoal(this.state)
 		this.setState({
@@ -31,7 +33,7 @@ class NewGoalForm extends Component{
 	render(){
 			return(
 			<Segment> 
-				<Form>
+				<Form onSubmit={this.handleSubmit}>
 					<Label>Title:</Label>
 							<Form.Input 
 							type='text'
@@ -64,7 +66,7 @@ class NewGoalForm extends Component{
 							value={this.state.before_deadline}
 							onChange={this.handleChange}
 							/>
-					<Button type='Submit'>Create Goal</Button>
+					<Button type="Submit" >Create Goal</Button>
 				</Form>
 			</Segment>
 			)

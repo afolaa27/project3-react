@@ -11,7 +11,7 @@ class GoalContainer extends Component {
 			goals:[],
 			editModalOpen: false,
 			goalToEdit:{
-				title : "",
+				title : '',
 				description : '',
 				deadline : '',
 				id: '',
@@ -45,7 +45,7 @@ class GoalContainer extends Component {
 		    })
 		    const deleteJson = await deleteResponse.json();
 
-		    if(deleteJson.status == 200){
+		    if(deleteJson.status === 200){
 		    	this.setState({
 		    		goals : this.state.goals.filter(goal=>goal.id !==id)
 		    	})
@@ -60,16 +60,17 @@ class GoalContainer extends Component {
 	createGoal = async (goalToAdd)=>{
 		try{
 		    const createResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/goals/',{
-		    	methond: 'POST',
+		    	method: 'POST',
 		    	body: JSON.stringify(goalToAdd),
 		    	credentials: 'include',
 		    	headers:{
 		    		'Content-Type': 'application/json'
 		    	}
 		    })
+		    console.log(createResponse);
 		    const createJson = await createResponse.json()
-
-		    if(createResponse.status ===201){
+		    console.log(createResponse.status);
+		    if(createResponse.status === 201){
 		    	this.setState({
 		    		goals:[...this.state.goals, createJson.data]
 		    	})

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Form,Button, Label} from 'semantic-ui-react'
+import {Form,Button, Label, Card} from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 import './index.css'
 
 class LoginRegisterForm extends Component{
@@ -38,6 +39,8 @@ class LoginRegisterForm extends Component{
 	render(){
 			return(
 			<div className="LoginRegisterForm"> 
+				<Card centered={true}>
+					
 				<Form onSubmit ={this.handleSubmit}>
 					{
 						this.state.action === 'register'
@@ -85,6 +88,7 @@ class LoginRegisterForm extends Component{
 					:
 					<small> dont have an account Sign up <span className="link" onClick={this.switchForm}>here</span>!</small>
 				}
+				</Card>
 			</div>
 			)
 		}

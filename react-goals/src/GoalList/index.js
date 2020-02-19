@@ -10,7 +10,7 @@ function GoalList(props) {
 			<Card key={goal.id} centered={true}>
 				<Card.Content>
 					<Card.Header>
-						{goal.title}
+						Tittle : {goal.title}
 					</Card.Header>
 					<Card.Description>
 						{goal.Description}
@@ -22,6 +22,11 @@ function GoalList(props) {
 						{goal.before_deadline}
 					</Card.Content>
 				</Card.Content>
+				<Card.Content extra>
+				<Button onClick={()=> props.deleteGoal(goal.id)}>Delete</Button>
+				
+				</Card.Content>
+
 			</Card>
 			)
 	})

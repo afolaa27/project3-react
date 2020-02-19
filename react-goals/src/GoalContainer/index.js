@@ -18,7 +18,6 @@ class GoalContainer extends Component {
 				id: '',
 				before_deadline: ''
 			},
-			idGoalToEdit: -1
 		}
 	}
 	componentDidMount(){
@@ -83,16 +82,70 @@ class GoalContainer extends Component {
 		  }
 	}
 	editGoal = async (idGoalToEdit) =>{
+		const goalToEdit = this.state.goals.find((goal)=>goal.id === idGoalToEdit)
+	
 		this.setState({
-			idGoalToEdit : idGoalToEdit
+			editModalOpen:true,
+			goalToEdit : {
+				...goalToEdit
+			}
 		})
 	}
-	closeModal=()=>{
+	/*closeModal=()=>{
 		this.setState({
 			idGoalToEdit:-1
 		})
+	}*/
+	handleEditChange=(event)=>{
+		this.setState({
+			goalToEdit:{
+				...this.state.goalToEdit,
+				[event.target.name]: event.target.value
+			}
+		})
 	}
+	handleSubmitEditForm=(e)=>{
+		e.preventDefault()
+		this.updateGoal()
+	}
+	updateGoal= async ()=>{
+		try{
+		    const updateResponse = await fetch(
+		    	process.env.REACT_APP_API_URL+'/api/v1/goals/'+ this.state.goalToEdit.id,
+		    	{
+		    		method:'PUT',
+		    		body : JSON.stringify(this.state.goalToEdit),
+		    		credentials: 'include',
+		    		headers:{
+		    			'Content-Type' : 'application/json'
+		    		}
+		    	}
 
+		    	)
+		    const updateJson = await updateResponse.json();
+		    if(updateResponse.status ===200){
+		    	const newGoalUpdated = this.state.goals.map((goal)=>{
+		    		if(goal.id === updateJson.data.id){
+		    			return updateJson.data
+		    		}else{
+		    			return goal
+		    		}
+		    	})
+		    	this.setState({
+		    		goals : newGoalUpdated
+		    	})
+		    	this.closeModal()
+		    }
+		  }
+		    catch(err){
+		      console.error(err)
+		  }
+	}
+	closeModal=()=>{
+		this.setState({
+			editModalOpen:false
+		})
+	}
 	render(){
 			return(
 			<div> 
@@ -103,9 +156,12 @@ class GoalContainer extends Component {
 						this.state.idGoalToEdit !==-1
 						?
 						<EditGoal 
-						goalToEdit={this.state.goals.find((goal)=> goal.id === this.state.idGoalToEdit)}
+						open={this.state.editModalOpen}
+						goalToEdit={this.state.goalToEdit}
 						updateGoal={this.updateGoal}
 						closeModal={this.closeModal}
+						handleEditChange={this.handleEditChange}
+						handleSubmitEditForm={this.handleSubmitEditForm}
 						/>
 						:
 						null

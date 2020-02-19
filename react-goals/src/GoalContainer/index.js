@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import GoalList from '../GoalList'
 import NewGoalForm from '../NewGoalForm'
+import EditGoal from '../EditGoal'
 
 
 
@@ -16,7 +17,8 @@ class GoalContainer extends Component {
 				deadline : '',
 				id: '',
 				before_deadline: ''
-			}
+			},
+			idGoalToEdit: -1
 		}
 	}
 	componentDidMount(){
@@ -80,13 +82,34 @@ class GoalContainer extends Component {
 		      console.error(err)
 		  }
 	}
+	editGoal = async (idGoalToEdit) =>{
+		this.setState({
+			idGoalToEdit : idGoalToEdit
+		})
+	}
+	closeModal=()=>{
+		this.setState({
+			idGoalToEdit:-1
+		})
+	}
 
 	render(){
 			return(
 			<div> 
 				<React.Fragment>
-					<GoalList goals={this.state.goals} deleteGoal={this.deleteGoal}/>
+					<GoalList goals={this.state.goals} deleteGoal={this.deleteGoal} editGoal={this.editGoal}/>
 					<NewGoalForm createGoal={this.createGoal}/>
+					{
+						this.state.idGoalToEdit !==-1
+						?
+						<EditGoal 
+						goalToEdit={this.state.goals.find((goal)=> goal.id === this.state.idGoalToEdit)}
+						updateGoal={this.updateGoal}
+						closeModal={this.closeModal}
+						/>
+						:
+						null
+					}
 				</React.Fragment>
 			</div>
 			)

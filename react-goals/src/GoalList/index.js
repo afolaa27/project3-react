@@ -5,6 +5,8 @@ import { Card, Button } from 'semantic-ui-react'
 function GoalList(props) {
 
 	const goals = props.goals.map((goal)=>{
+		const currentDate = new Date()
+		const date = currentDate.getDate()
 		return(
 
 			<Card key={goal.id} centered={true}>
@@ -24,7 +26,7 @@ function GoalList(props) {
 				</Card.Content>
 				<Card.Content extra>
 				<Button onClick={()=> props.deleteGoal(goal.id)}>Delete</Button>
-				
+				<Button onClick={()=> props.editGoal(goal.id)}>Edit</Button>
 				</Card.Content>
 
 			</Card>

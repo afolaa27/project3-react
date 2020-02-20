@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       loggedIn : false,
       loggedInUserEmail: null,
-      color: ''
+      wrongInfo: false
     }
   }
 
@@ -28,7 +28,7 @@ class App extends Component {
         }
       })
       const registerJson = await registerResponse.json()
-      
+
     }
     catch(err){
       if(err){
@@ -57,7 +57,7 @@ class App extends Component {
         })
       }else{
         this.setState({
-          color : 'red'
+          wrongInfo : true
         })
       }
 
@@ -79,7 +79,7 @@ class App extends Component {
           :
           <div>
           <HomeIntro/>
-          <LoginRegisterForm register={this.register} login={this.login} color={this.state.color}/>
+          <LoginRegisterForm register={this.register} login={this.login} color={this.state.wrongInfo}/>
           </div>
         }
         

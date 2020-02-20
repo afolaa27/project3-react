@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import LoginRegisterForm from './LoginRegisterForm'
 import GoalContainer from './GoalContainer'
+import HomeIntro from './HomeIntro'
 import 'semantic-ui-css/semantic.min.css'
 import './index.css'
 
@@ -57,14 +58,19 @@ class App extends Component {
   }
   render(){
       return(
-      <div className="App"> 
+        
+      <div className="App" style={{backgroundColor: 'lightgrey'}}> 
+
+        
         {
           this.state.loggedIn
           ?
           <GoalContainer/>
           :
-        
+          <div>
+          <HomeIntro/>
           <LoginRegisterForm register={this.register} login={this.login}/>
+          </div>
         }
         
       </div>

@@ -7,12 +7,41 @@
   	top: 50%;
   	left: 50%;
   	transform: translate(-50%, -50%);
-  	box-shadow:0 8px 6px -6px black;
+
+  	box-shadow:0 8px 16px -6px black;
 }
 .ui.card.formCard{
 	text-align: center;
 }
 .addGoal{
-	margin-top: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	text-align: center;
+
+}
+.buttonBox{
+	display: flex;
+	justify-content: space-between;
+}
+.goalList{
+	margin-top: 50px;
+	margin-left: 30px;
+	margin-right: 40px;
+	display: flex;
+	justify-content: space-between;	
+	box-shadow:0 8px 16px -6px black;
+}
+body{
+	background-color: lightgrey;
+}
+.input{
+	margin-left: 9px;
+	width: 92%;
+}
+.head{
+	text-align: center;
+	background-color: grey;
+	border-radius: 2px;
+	opacity: 0.7;
+
 }

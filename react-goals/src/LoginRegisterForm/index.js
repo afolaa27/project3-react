@@ -47,7 +47,7 @@ class LoginRegisterForm extends Component{
 						?
 						<React.Fragment >
 							<label>Username</label>
-							<Form.Input 
+							<Form.Input className='input'
 							type='text'
 							name='username'
 							placeholder='Enter Username'
@@ -60,7 +60,7 @@ class LoginRegisterForm extends Component{
 						null
 					}
 					<label>Email</label>
-							<Form.Input 
+							<Form.Input className='input'
 							type='text'
 							name='email'
 							placeholder='Enter email'
@@ -68,7 +68,7 @@ class LoginRegisterForm extends Component{
 							onChange={this.handleChange}
 							/>
 					<label>Password</label>
-							<Form.Input 
+							<Form.Input className='input' 
 							type='password'
 							name='password'
 							placeholder='Enter password'

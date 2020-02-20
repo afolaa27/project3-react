@@ -163,10 +163,13 @@ class GoalContainer extends Component {
 			return(
 			<div> 
 				<React.Fragment>
+					<div className='head'>
+						<h1>My Goals</h1>
+					</div>
 					<GoalList goals={this.state.goals} deleteGoal={this.deleteGoal} editGoal={this.editGoal}/>
 					<div className='addGoal'>
 						
-						<Button onClick={this.openAddModal}>Add Goal</Button>
+						<Button style={{boxShadow:'0 6px 8px -6px black'}} onClick={this.openAddModal}>Add Goal</Button>
 					</div>
 					{
 					this.state.addModalOpen

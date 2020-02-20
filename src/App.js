@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css'
 import './index.css'
 
 class App extends Component {
+
   constructor(props){
     super(props)
     this.state = {
@@ -13,6 +14,7 @@ class App extends Component {
       loggedInUserEmail: null
     }
   }
+
   register = async(registerInfo)=>{
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
     try{

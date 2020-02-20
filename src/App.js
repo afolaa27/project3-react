@@ -28,7 +28,13 @@ class App extends Component {
         }
       })
       const registerJson = await registerResponse.json()
+      if(registerResponse.status ===200){
+        this.setState({
+          loggedIn: true,
+          loggedInUserEmail : loginJson.data.email
 
+        })
+      }
     }
     catch(err){
       if(err){

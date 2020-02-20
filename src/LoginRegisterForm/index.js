@@ -39,7 +39,7 @@ class LoginRegisterForm extends Component{
 	render(){
 			return(
 			<div className="LoginRegisterForm" className="login" > 
-				<Card centered={true} className='formCard' color={this.props.color} >
+				<Card centered={true} className='formCard'>
 					
 				<Form onSubmit ={this.handleSubmit} >
 					{
@@ -87,6 +87,13 @@ class LoginRegisterForm extends Component{
 					<small> if you have an account Log in <span className="link" onClick={this.switchForm}>here</span>.</small>
 					:
 					<small> dont have an account Sign up <span className="link" onClick={this.switchForm}>here</span>!</small>
+				}
+				{
+					this.props.wrongInfo
+					?
+					<small style={{color:'red'}}>Your Credentials Are Wrong !</small>
+					:
+					null
 				}
 				</Card>
 			</div>

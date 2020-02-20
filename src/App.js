@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       loggedIn : false,
       loggedInUserEmail: null,
-      wrongInfo: false
+      wrongInfo: false,
       wrongInfoReg: false
     }
   }
@@ -37,12 +37,13 @@ class App extends Component {
         })
 
     }
+  }
     catch(err){
       if(err){
         console.error(err)
       }
     }
-  }
+  
 }
   login = async(loginInfo)=>{
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/login'

@@ -13,6 +13,7 @@ class App extends Component {
       loggedIn : false,
       loggedInUserEmail: null,
       wrongInfo: false
+      wrongInfoReg: false
     }
   }
 
@@ -28,6 +29,12 @@ class App extends Component {
         }
       })
       const registerJson = await registerResponse.json()
+      if(registerResponse.status ===201){
+        this.setState({
+          loggedIn: true,
+          loggedInUserEmail : registerJson.data.email,
+          wrongInfoReg: true
+        })
 
     }
     catch(err){
@@ -79,7 +86,8 @@ class App extends Component {
           :
           <div>
           <HomeIntro/>
-          <LoginRegisterForm register={this.register} login={this.login} wrongInfo={this.state.wrongInfo}/>
+          <LoginRegisterForm register={this.register} login={this.login} 
+          wrongInfo={this.state.wrongInfo} wrongInfoReg={this.state.wrongInfoReg}/>
           </div>
         }
         

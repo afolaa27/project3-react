@@ -39,7 +39,7 @@ class LoginRegisterForm extends Component{
 	render(){
 			return(
 			<div className="LoginRegisterForm" className="login" > 
-				<Card centered={true} className='formCard' color={this.props.state.color} >
+				<Card centered={true} className='formCard' color={this.props.color} >
 					
 				<Form onSubmit ={this.handleSubmit} >
 					{

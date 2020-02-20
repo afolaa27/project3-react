@@ -79,7 +79,7 @@ class App extends Component {
           :
           <div>
           <HomeIntro/>
-          <LoginRegisterForm register={this.register} login={this.login}/>
+          <LoginRegisterForm register={this.register} login={this.login} color={this.state.color}/>
           </div>
         }
         

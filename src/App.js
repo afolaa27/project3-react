@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       loggedIn : false,
       loggedInUserEmail: null
+      color: ''
     }
   }
 
@@ -52,6 +53,11 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           loggedInUserEmail : loginJson.data.email
+
+        })
+      }else{
+        this.setState({
+          color : 'red'
         })
       }
 

@@ -38,25 +38,27 @@ class App extends Component {
   login = async(loginInfo)=>{
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/login'
     try{
-        const logResponse = await fetch(url, {
-          credentials: 'include',
-          method: "POST",
-          body: JSON.stringify(loginInfo),
-          headers:{
-            'Content-Type' : 'application/json'
-          }
-        })
-        const loginJson = await logResponse.json()
-        if(logResponse.status ===200){
-          this.setState({
-            loggedIn: true,
-            loggedInUserEmail : loginJson.data.email
-          })
+      const logResponse = await fetch(url, {
+        credentials: 'include',
+        method: "POST",
+        body: JSON.stringify(loginInfo),
+        headers:{
+          'Content-Type' : 'application/json'
         }
+      })
+      const loginJson = await logResponse.json()
+      console.log(loginJson)
+      if(logResponse.status ===200){
+        this.setState({
+          loggedIn: true,
+          loggedInUserEmail : loginJson.data.email
+        })
       }
-        catch(err){
-          console.error(err)
-      }
+
+    }
+    catch(err){
+      console.error(err)
+    }
   }
   render(){
       return(

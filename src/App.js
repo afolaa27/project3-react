@@ -34,6 +34,7 @@ class App extends Component {
           loggedIn: true,
           loggedInUserEmail : registerJson.data.email,
           wrongInfoReg: true
+          
         })
 
     }

@@ -29,12 +29,12 @@ class App extends Component {
         }
       })
       const registerJson = await registerResponse.json()
-      if(registerResponse.status ===201){
+      if(registerResponse.status === 201){
         this.setState({
           loggedIn: true,
           loggedInUserEmail : registerJson.data.email,
           wrongInfoReg: true
-          
+
         })
 
     }

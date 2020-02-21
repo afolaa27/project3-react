@@ -33,6 +33,7 @@ class NewGoalForm extends Component{
 	render(){
 			return(
 			<Modal open={this.props.open} closeIcon={true} onClose={this.props.closeModal}>
+				<Modal.Content>
 				<Form onSubmit={this.handleSubmit}>
 					<Label>Title:</Label>
 							<Form.Input 
@@ -68,6 +69,7 @@ class NewGoalForm extends Component{
 							/>
 					<Button type="Submit" >Create Goal</Button>
 				</Form>
+				</Modal.Content>
 			</Modal>
 			)
 		}

@@ -41,10 +41,12 @@ function GoalList(props) {
 					Due: {goal.deadline.substring(0, 16)}
 				</Card.Content>
 				<Card.Content>
-					{due?
+					{
+						due?
 						<p>Your Goal is Due Now</p>
 					:
-					<p>you will be reminded {goal.before_deadline} day{goal.before_deadline > 1?"s": null
+					<p>you will be reminded {goal.before_deadline} day{
+						goal.before_deadline > 1?"s": null
 					 } before deadline </p>
 
 					

@@ -98,7 +98,7 @@ class App extends Component {
         {
           this.state.loggedIn
           ?
-          <GoalContainer/>
+          <GoalContainer logout={this.logout}/>
           :
           <div>
           <HomeIntro/>

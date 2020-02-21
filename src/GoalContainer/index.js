@@ -144,6 +144,7 @@ class GoalContainer extends Component {
 		      console.error(err)
 		  }
 	}
+	
 	closeModal=()=>{
 		this.setState({
 			editModalOpen:false
@@ -165,6 +166,7 @@ class GoalContainer extends Component {
 				<React.Fragment>
 					<div className='head'>
 						<h1>My Goals</h1>
+						<Button style={{boxShadow:'0 6px 8px -6px black'}} onClick={this.logout}>Logout</Button>
 					</div>
 					<GoalList goals={this.state.goals} deleteGoal={this.deleteGoal} editGoal={this.editGoal}/>
 					<div className='addGoal'>

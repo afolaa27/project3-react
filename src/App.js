@@ -76,7 +76,7 @@ class App extends Component {
     }
   } 
   logout= async ()=>{
-     const logoutResponse = await fetch(process.env.REACT_APP_API_URL+'/api/v1/logout/'
+     const logoutResponse = process.env.REACT_APP_API_URL+'/api/v1/logout/'
     try{
         if(logoutResponse.status === 200){
           this.setState({

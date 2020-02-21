@@ -95,20 +95,7 @@ class LoginRegisterForm extends Component{
 					:
 					null
 				}
-				{
-					this.props.wrongInfo
-					?
-					null
-					:
-					<small style={{color:'red'}}>Try new details!</small>
-				}
-				{
-					this.props.wrongInfoReg
-					?
-					null
-					:
-					<small style={{color:'green'}}>You successfully signed up now login!</small>
-				}
+				
 				</Card>
 			</div>
 			)

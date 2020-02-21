@@ -13,7 +13,7 @@ class App extends Component {
       loggedIn : false,
       loggedInUserEmail: null,
       wrongInfo: false,
-      wrongInfoReg: false
+     
     }
   }
 
@@ -33,8 +33,7 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           loggedInUserEmail : registerJson.data.email,
-          wrongInfoReg: true
-
+  
         })
 
     }
@@ -104,7 +103,7 @@ class App extends Component {
           <div>
           <HomeIntro/>
           <LoginRegisterForm register={this.register} login={this.login} 
-          wrongInfo={this.state.wrongInfo} wrongInfoReg={this.state.wrongInfoReg}/>
+          wrongInfo={this.state.wrongInfo} />
           </div>
         }
         

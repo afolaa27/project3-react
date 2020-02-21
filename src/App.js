@@ -92,7 +92,7 @@ class App extends Component {
   render(){
       return(
         
-      <div className="App" style={{backgroundColor: 'lightgrey'}}> 
+      <div className="App" /*style={{backgroundColor: 'lightgrey'}}*/> 
 
         
         {

@@ -34,7 +34,7 @@ function GoalList(props) {
 					{goal.title}
 				</Card.Header>
 				<Card.Description>
-					{goal.Description}
+					{goal.description}
 				</Card.Description>
 				<Card.Content>
 					Due: {goal.deadline.substring(0, 16)}

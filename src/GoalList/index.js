@@ -12,7 +12,7 @@ function GoalList(props) {
 	const currentDate = new Date()
 	const date = currentDate.getDate()
 
-	if (goal.deadline.substring(4, 7) == date){
+	if (goal.deadline.substring(4, 7) >= date){
 		color ='red'
 		due = true
 	}
@@ -27,7 +27,6 @@ function GoalList(props) {
 
 
 	return(
-			
 		<div className='goalList' >
 		<Card key={goal.id} centered={true} color={color} style ={{backgroundColor: color}}>
 			<Card.Content>
